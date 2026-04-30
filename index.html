@@ -2,16 +2,85 @@
 <html lang="ar" dir="rtl">
 
 <head>
+    <!-- =========================================================
+         1) إعدادات أساسية للصفحة
+         ========================================================= -->
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>حاسبة نقط الترقية - المكتب الإقليمي لآسفي</title>
 
-    <!-- أيقونة الصفحة في المتصفح -->
+    <!-- تجعل الصفحة مناسبة للهواتف، وتمنع التكبير غير المرغوب فيه -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- عنوان الصفحة الذي يظهر في تبويب المتصفح -->
+    <title>نقطتي للترقية - المكتب الإقليمي لآسفي</title>
+
+    <!-- وصف عادي لمحركات البحث -->
+    <meta name="description"
+        content="تطبيق مبسط لحساب نقط الترقية بالاختيار لنساء ورجال التعليم، من إعداد المكتب الإقليمي لآسفي." />
+
+    <!-- =========================================================
+         2) أيقونة الصفحة في المتصفح
+         يجب رفع الملف untm-logo.png بجانب index.html
+         ========================================================= -->
     <link rel="icon" type="image/png" href="untm-logo.png">
 
+    <!-- =========================================================
+         3) Open Graph
+         هذه الوسوم تجعل الرابط يظهر بشكل جميل عند تقاسمه في:
+         WhatsApp / Facebook / LinkedIn وغيرها
+         
+         مهم:
+         يجب تغيير USERNAME و REPOSITORY حسب رابط GitHub Pages الخاص بك.
+         
+         مثال:
+         https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/
+         ========================================================= -->
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_MA" />
+    <meta property="og:site_name" content="نقطتي للترقية" />
+
+    <!-- العنوان الذي يظهر عند مشاركة الرابط -->
+    <meta property="og:title" content="نقطتي للترقية - المكتب الإقليمي لآسفي" />
+
+    <!-- الوصف الذي يظهر أسفل العنوان عند المشاركة -->
+    <meta property="og:description"
+        content="تطبيق مبسط لحساب نقط الترقية بالاختيار لنساء ورجال التعليم، من إعداد المكتب الإقليمي لآسفي." />
+
+    <!-- رابط الصفحة الحقيقي بعد النشر في GitHub Pages -->
+    <meta property="og:url" content="https://USERNAME.github.io/REPOSITORY/" />
+
+    <!-- صورة المعاينة عند تقاسم الرابط
+         الأفضل أن تكون preview.png بمقاس 1200x630 px -->
+    <meta property="og:image" content="https://USERNAME.github.io/REPOSITORY/preview.png" />
+    <meta property="og:image:secure_url" content="https://USERNAME.github.io/REPOSITORY/preview.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- =========================================================
+         4) Twitter / X Card
+         هذه الوسوم تفيد كذلك في منصات أخرى
+         ========================================================= -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="نقطتي للترقية - المكتب الإقليمي لآسفي" />
+    <meta name="twitter:description"
+        content="تطبيق مبسط لحساب نقط الترقية بالاختيار لنساء ورجال التعليم، من إعداد المكتب الإقليمي لآسفي." />
+    <meta name="twitter:image" content="https://USERNAME.github.io/REPOSITORY/preview.png" />
+
+    <!-- =========================================================
+         5) مكتبة html2canvas
+         تستعمل لحفظ بطاقة النتيجة كصورة
+         تحتاج إلى اتصال بالإنترنت
+         ========================================================= -->
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 
+    <!-- =========================================================
+         6) تنسيق CSS
+         ========================================================= -->
     <style>
+        /* =========================================================
+           متغيرات الألوان والتصميم العام
+           ========================================================= */
         :root {
             --orange-1: #f97316;
             --orange-2: #fb923c;
@@ -25,6 +94,7 @@
             --radius: 22px;
         }
 
+        /* إزالة الهوامش الافتراضية وتوحيد الخط */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -32,12 +102,14 @@
             font-family: Arial, Tahoma, sans-serif;
         }
 
+        /* خلفية الصفحة */
         body {
             min-height: 100vh;
             background: linear-gradient(180deg, #f8fafc 0%, #fff7ed 50%, #fff 100%);
             color: var(--text);
         }
 
+        /* الشريط البرتقالي العلوي */
         .top-band {
             min-height: 100px;
             background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
@@ -51,6 +123,7 @@
             text-align: center;
         }
 
+        /* عنوان الشريط العلوي */
         .top-title {
             color: white;
             font-size: 22px;
@@ -58,12 +131,14 @@
             line-height: 1.5;
         }
 
+        /* الحاوية الرئيسية */
         .app {
             max-width: 520px;
             margin: -22px auto 0 auto;
             padding: 16px 14px 28px;
         }
 
+        /* بطاقة المقدمة */
         .hero {
             background: linear-gradient(135deg, #ea580c, #fb923c, #f97316);
             color: white;
@@ -74,6 +149,7 @@
             text-align: center;
         }
 
+        /* صندوق اللوغو داخل الصفحة */
         .logo-box {
             width: 96px;
             height: 96px;
@@ -118,6 +194,7 @@
             color: #ffedd5;
         }
 
+        /* بطاقات الإدخال */
         .card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -133,6 +210,7 @@
             margin-bottom: 14px;
         }
 
+        /* كل خانة إدخال */
         .field {
             display: flex;
             flex-direction: column;
@@ -144,12 +222,14 @@
             margin-bottom: 0;
         }
 
+        /* شبكة الخانات */
         .field-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 10px;
         }
 
+        /* وضع ثلاث خانات جنبًا إلى جنب */
         .field-grid.three {
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
@@ -196,6 +276,7 @@
             box-shadow: 0 0 0 4px var(--orange-4);
         }
 
+        /* أزرار الحساب والضبط */
         .buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -231,16 +312,19 @@
             background: #fff7ed;
         }
 
+        /* قسم النتيجة مخفي في البداية */
         .result-panel {
             display: none;
             margin-top: 18px;
         }
 
+        /* يظهر بعد الضغط على احسب النتيجة */
         .result-panel.show {
             display: block;
             animation: fadeUp 0.35s ease;
         }
 
+        /* حركة ظهور النتيجة */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -253,7 +337,7 @@
             }
         }
 
-        /* بطاقة النتيجة باللون البرتقالي */
+        /* بطاقة النتيجة باللون البرتقالي والكتابة بالأبيض */
         .result-card {
             background: linear-gradient(135deg, #ea580c, #f97316, #fb923c);
             color: white;
@@ -312,6 +396,7 @@
             text-align: left;
         }
 
+        /* أزرار المشاركة والحفظ والنسخ */
         .small-actions {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -332,6 +417,7 @@
             line-height: 1.5;
         }
 
+        /* أسفل الصفحة */
         .footer {
             text-align: center;
             margin-top: 16px;
@@ -340,6 +426,9 @@
             line-height: 1.8;
         }
 
+        /* =========================================================
+           7) تحسين العرض على الهواتف الصغيرة
+           ========================================================= */
         @media (max-width: 420px) {
             .app {
                 padding-left: 10px;
@@ -393,6 +482,9 @@
             }
         }
 
+        /* =========================================================
+           8) تحسين العرض على الحاسوب واللوحات الكبيرة
+           ========================================================= */
         @media (min-width: 700px) {
             .app {
                 max-width: 950px;
@@ -415,11 +507,18 @@
 
 <body>
 
+    <!-- =========================================================
+         9) الشريط العلوي
+         ========================================================= -->
     <div class="top-band">
-        <div class="top-title">حاسبة نقط الترقية بالاختيار</div>
+        <div class="top-title">نقطتي للترقية</div>
     </div>
 
     <main class="app">
+
+        <!-- =========================================================
+             10) بطاقة التعريف بالتطبيق
+             ========================================================= -->
         <section class="hero">
             <div class="logo-box">
                 <img src="untm-logo.png" alt="لوغو النقابة">
@@ -428,7 +527,7 @@
             <h2>الإتحاد الوطني للشغل بالمغرب</h2>
             <h2>الجامعة الوطنية لموظفي التعليم</h2>
             <h1>المكتب الإقليمي لآسفي</h1>
-            <h3>حاسبة نقط الترقية بالاختيار</h3>
+            <h3>نقطتي للترقية</h3>
 
             <p>
                 تطبيق مبسط لحساب مجموع نقط الترقية بالاختيار، اعتمادًا على
@@ -436,8 +535,17 @@
             </p>
         </section>
 
+        <!-- =========================================================
+             11) شبكة الصفحة: الإدخال + النتيجة
+             ========================================================= -->
         <div class="desktop-grid">
+
+            <!-- =====================================================
+                 12) قسم إدخال المعطيات
+                 ===================================================== -->
             <section>
+
+                <!-- سنة الترقي -->
                 <div class="card">
                     <div class="field">
                         <label for="promotionYear">سنة الترقي المطلوبة</label>
@@ -445,6 +553,7 @@
                     </div>
                 </div>
 
+                <!-- الأقدمية العامة -->
                 <div class="card">
                     <h3>الأقدمية العامة / تاريخ التعيين أو الترسيم</h3>
 
@@ -466,6 +575,7 @@
                     </div>
                 </div>
 
+                <!-- الأقدمية في الدرجة -->
                 <div class="card">
                     <h3>الأقدمية في الدرجة / السلم الحالي</h3>
 
@@ -487,6 +597,7 @@
                     </div>
                 </div>
 
+                <!-- نقط التقييم -->
                 <div class="card">
                     <h3>نقط التقييم</h3>
 
@@ -509,14 +620,20 @@
                     </div>
                 </div>
 
+                <!-- أزرار الحساب والضبط -->
                 <div class="buttons">
                     <button class="btn-primary" onclick="showResult()">احسب النتيجة</button>
                     <button class="btn-secondary" onclick="resetForm()">إعادة الضبط</button>
                 </div>
             </section>
 
+            <!-- =====================================================
+                 13) قسم عرض النتيجة
+                 ===================================================== -->
             <section class="result-sticky">
                 <div id="resultPanel" class="result-panel">
+
+                    <!-- بطاقة النتيجة التي تحفظ كصورة -->
                     <div id="resultCapture" class="result-card">
                         <div class="result-title">المجموع الكلي للنقط</div>
                         <div class="result-total" id="totalPoints">0</div>
@@ -550,6 +667,7 @@
                         </div>
                     </div>
 
+                    <!-- أزرار التعامل مع النتيجة -->
                     <div class="small-actions">
                         <button onclick="shareResultGeneral()">مشاركة النتيجة</button>
                         <button onclick="saveResultAsImage()">حفظ كصورة</button>
@@ -560,22 +678,34 @@
             </section>
         </div>
 
+        <!-- =========================================================
+             14) أسفل الصفحة
+             ========================================================= -->
         <div class="footer">
             جميع الحقوق محفوظة — الجامعة الوطنية لموظفي التعليم — المكتب الإقليمي لآسفي
         </div>
     </main>
 
+    <!-- =========================================================
+         15) JavaScript: منطق الحساب والمشاركة
+         ========================================================= -->
     <script>
+        /* سنة الترقي الافتراضية */
         const defaultPromotionYear = 2025;
+
+        /* السنة الحالية تستعمل فقط لوضع قيم افتراضية للأقدمية */
         const currentYear = new Date().getFullYear();
 
+        /* تخزين آخر نتيجة محسوبة */
         let lastResult = null;
 
+        /* أسماء الشهور بالعربية */
         const months = [
             "يناير", "فبراير", "مارس", "أبريل", "ماي", "يونيو",
             "يوليوز", "غشت", "شتنبر", "أكتوبر", "نونبر", "دجنبر"
         ];
 
+        /* تعبئة لائحة الشهور في الخانات */
         function fillMonths() {
             const adminMonth = document.getElementById("adminMonth");
             const gradeMonth = document.getElementById("gradeMonth");
@@ -596,20 +726,24 @@
             });
         }
 
+        /* وضع قيمة داخل خانة معينة */
         function setValue(id, value) {
             document.getElementById(id).value = value;
         }
 
+        /* جلب قيمة خانة معينة */
         function getValue(id) {
             return document.getElementById(id).value;
         }
 
+        /* ضبط القيم داخل حدود دنيا وعليا */
         function clamp(value, min, max) {
             const number = Number(value);
             if (Number.isNaN(number)) return min;
             return Math.max(min, Math.min(max, number));
         }
 
+        /* حساب عدد السنوات الكاملة إلى غاية 31 دجنبر من سنة الترقي */
         function fullYearsUntilEndOfPromotionYear(year, month, day, promotionYear) {
             const start = new Date(Number(year), Number(month) - 1, Number(day));
             const end = new Date(Number(promotionYear), 11, 31);
@@ -624,6 +758,7 @@
             return Math.max(0, years);
         }
 
+        /* حساب مجموع نقط الترقية */
         function calculateResult() {
             const promotionYear = clamp(getValue("promotionYear"), 2024, 2100);
 
@@ -666,6 +801,7 @@
             };
         }
 
+        /* إظهار النتيجة داخل البطاقة */
         function renderResult(result) {
             document.getElementById("totalPoints").textContent = result.total.toFixed(2);
             document.getElementById("rAdminYears").textContent = result.adminYears + " سنة";
@@ -677,6 +813,7 @@
             document.getElementById("resultPanel").classList.add("show");
         }
 
+        /* عند الضغط على زر احسب النتيجة */
         function showResult() {
             const result = calculateResult();
             lastResult = result;
@@ -688,11 +825,13 @@
             });
         }
 
+        /* إخفاء النتيجة */
         function hideResult() {
             document.getElementById("resultPanel").classList.remove("show");
             lastResult = null;
         }
 
+        /* إعادة الضبط إلى القيم الافتراضية */
         function resetForm() {
             setValue("promotionYear", defaultPromotionYear);
 
@@ -716,6 +855,7 @@
             });
         }
 
+        /* ضمان وجود نتيجة قبل المشاركة أو النسخ أو الحفظ */
         function ensureResult() {
             if (!lastResult) {
                 lastResult = calculateResult();
@@ -725,6 +865,7 @@
             return lastResult;
         }
 
+        /* تنسيق النتيجة كنص قابل للمشاركة */
         function formatResultText(result) {
             return [
                 "نتيجة حساب نقط الترقية",
@@ -740,6 +881,7 @@
             ].join("\n");
         }
 
+        /* مشاركة النتيجة عبر خاصية المشاركة في الهاتف */
         async function shareResultGeneral() {
             const result = ensureResult();
             const text = formatResultText(result);
@@ -751,7 +893,7 @@
                         text: text
                     });
                 } catch (e) {
-                    // تم إلغاء المشاركة أو وقع خطأ
+                    /* تم إلغاء المشاركة أو وقع خطأ */
                 }
             } else {
                 copyTextFallback(text);
@@ -759,6 +901,7 @@
             }
         }
 
+        /* نسخ النتيجة */
         async function copyResult() {
             const result = ensureResult();
             const text = formatResultText(result);
@@ -778,6 +921,7 @@
             alert("تم نسخ النتيجة.");
         }
 
+        /* طريقة احتياطية للنسخ */
         function copyTextFallback(text) {
             const textarea = document.createElement("textarea");
             textarea.value = text;
@@ -787,6 +931,7 @@
             document.body.removeChild(textarea);
         }
 
+        /* حفظ بطاقة النتيجة كصورة */
         function saveResultAsImage() {
             const result = ensureResult();
             const target = document.getElementById("resultCapture");
@@ -805,6 +950,7 @@
             });
         }
 
+        /* تشغيل التطبيق عند فتح الصفحة */
         fillMonths();
         resetForm();
     </script>
