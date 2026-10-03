@@ -20,9 +20,7 @@
   <!-- =========================================================
        2) إعدادات مشاركة رابط الموقع
        ملاحظة:
-       بعد رفع الموقع إلى GitHub Pages يفضل تعويض og:image
-       برابط مطلق للصورة، مثلا:
-       https://USERNAME.github.io/REPOSITORY/untm-logo.png
+       تستعمل هذه البيانات لإنشاء بطاقة المعاينة عند مشاركة رابط التطبيق.
        ========================================================= -->
   <!-- =========================================================
        2) بطاقة المعاينة عند مشاركة رابط التطبيق
@@ -53,9 +51,10 @@
 
   <!-- يجب أن يكونا رابطين مطلقين بعد النشر -->
   <meta property="og:url" content="https://noqati-untm-safi.pages.dev/" />
-  <meta property="og:image" content="https://noqati-untm-safi.pages.dev/preview.png" />
-  <meta property="og:image:secure_url" content="https://noqati-untm-safi.pages.dev/preview.png" />
-  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image" content="https://noqati-untm-safi.pages.dev/preview-whatsapp-v2.jpg" />
+  <meta property="og:image:url" content="https://noqati-untm-safi.pages.dev/preview-whatsapp-v2.jpg" />
+  <meta property="og:image:secure_url" content="https://noqati-untm-safi.pages.dev/preview-whatsapp-v2.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="نقطتي للترقية - المكتب الإقليمي لآسفي" />
@@ -64,7 +63,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="نقطتي للترقية | المكتب الإقليمي لآسفي" />
   <meta name="twitter:description" content="تطبيق تفاعلي لحساب مجموع نقط الترقية بالاختيار." />
-  <meta name="twitter:image" content="https://noqati-untm-safi.pages.dev/preview.png" />
+  <meta name="twitter:image" content="https://noqati-untm-safi.pages.dev/preview-whatsapp-v2.jpg" />
 
   <!-- =========================================================
        3) مكتبة تحويل بطاقة النتيجة إلى صورة
@@ -1363,7 +1362,7 @@
 
     /* الرابط العمومي النهائي للتطبيق */
     const PUBLIC_APP_URL =
-      "https://noqati-untm-safi.pages.dev/";
+      "https://noqati-untm-safi.pages.dev/?v=2";
 
     /* تخزين آخر نتيجة صحيحة */
     let lastResult = null;
