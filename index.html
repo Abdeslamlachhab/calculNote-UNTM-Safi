@@ -2,978 +2,2146 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DVDYJNK9Z7"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        gtag('config', 'G-DVDYJNK9Z7');
-    </script>
-
-    
-    <!-- =========================================================
-         1) إعدادات أساسية للصفحة
-         ========================================================= -->
-    <meta charset="UTF-8" />
-
-    <!-- تجعل الصفحة مناسبة للهواتف، وتمنع التكبير غير المرغوب فيه -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-    <!-- عنوان الصفحة الذي يظهر في تبويب المتصفح -->
-    <title>نقطتي للترقية</title>
-
-    <!-- وصف عادي لمحركات البحث -->
-    <meta name="description"
-        content="تطبيق مبسط لحساب نقط الترقية بالاختيار لنساء ورجال التعليم." />
-
-    <!-- =========================================================
-         2) أيقونة الصفحة في المتصفح
-         يجب رفع الملف untm-logo.png بجانب index.html
-         ========================================================= -->
-    <link rel="icon" type="image/png" href="untm-logo.png">
-
-    <!-- =========================================================
-         3) Open Graph
-         هذه الوسوم تجعل الرابط يظهر بشكل جميل عند تقاسمه في:
-         WhatsApp / Facebook / LinkedIn وغيرها
-         
-         مهم:
-         يجب تغيير USERNAME و REPOSITORY حسب رابط GitHub Pages الخاص بك.
-         
-         مثال:
-         https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/
-         ========================================================= -->
-
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ar_MA" />
-    <meta property="og:site_name" content="نقطتي للترقية" />
-
-    <!-- العنوان الذي يظهر عند مشاركة الرابط -->
-    <meta property="og:title" content="نقطتي للترقية" />
-
-    <!-- الوصف الذي يظهر أسفل العنوان عند المشاركة -->
-    <meta property="og:description"
-        content="تطبيق مبسط لحساب نقط الترقية بالاختيار لنساء ورجال التعليم." />
-
-    <!-- رابط الصفحة الحقيقي بعد النشر في GitHub Pages -->
-    <meta property="og:url" content="https://USERNAME.github.io/REPOSITORY/" />
-
-    <!-- صورة المعاينة عند تقاسم الرابط
-         الأفضل أن تكون preview.png بمقاس 1200x630 px -->
-    <meta property="og:image" content="https://USERNAME.github.io/REPOSITORY/preview.png" />
-    <meta property="og:image:secure_url" content="https://USERNAME.github.io/REPOSITORY/preview.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <!-- =========================================================
-         4) Twitter / X Card
-         هذه الوسوم تفيد كذلك في منصات أخرى
-         ========================================================= -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="نقطتي للترقية" />
-    <meta name="twitter:description"
-        content="تطبيق مبسط لحساب نقط الترقية بالاختيار لنساء ورجال التعليم." />
-    <meta name="twitter:image" content="https://USERNAME.github.io/REPOSITORY/preview.png" />
-
-    <!-- =========================================================
-         5) مكتبة html2canvas
-         تستعمل لحفظ بطاقة النتيجة كصورة
-         تحتاج إلى اتصال بالإنترنت
-         ========================================================= -->
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-
-    <!-- =========================================================
-         6) تنسيق CSS
-         ========================================================= -->
-    <style>
-        /* =========================================================
-           متغيرات الألوان والتصميم العام
-           ========================================================= */
-        :root {
-            --orange-1: #f97316;
-            --orange-2: #fb923c;
-            --orange-3: #fff7ed;
-            --orange-4: #ffedd5;
-            --text: #0f172a;
-            --muted: #64748b;
-            --card: #ffffff;
-            --border: #fed7aa;
-            --shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-            --radius: 22px;
-        }
-
-        /* إزالة الهوامش الافتراضية وتوحيد الخط */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Tahoma, sans-serif;
-        }
-
-        /* خلفية الصفحة */
-        body {
-            min-height: 100vh;
-            background: linear-gradient(180deg, #f8fafc 0%, #fff7ed 50%, #fff 100%);
-            color: var(--text);
-        }
-
-        /* الشريط البرتقالي العلوي */
-        .top-band {
-            min-height: 100px;
-            background: linear-gradient(135deg, var(--orange-1), var(--orange-2));
-            border-bottom-left-radius: 24px;
-            border-bottom-right-radius: 24px;
-            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 12px 38px;
-            text-align: center;
-        }
-
-        /* عنوان الشريط العلوي */
-        .top-title {
-            color: white;
-            font-size: 28px;
-            font-weight: 900;
-            line-height: 2;
-        }
-
-        /* الحاوية الرئيسية */
-        .app {
-            max-width: 520px;
-            margin: -22px auto 0 auto;
-            padding: 16px 14px 28px;
-        }
-
-        /* بطاقة المقدمة */
-        .hero {
-            background: linear-gradient(135deg, #ea580c, #fb923c, #f97316);
-            color: white;
-            border-radius: 26px;
-            padding: 20px 18px;
-            box-shadow: 0 16px 35px rgba(234, 88, 12, 0.20);
-            margin-bottom: 14px;
-            text-align: center;
-        }
-
-        /* صندوق اللوغو داخل الصفحة */
-        .logo-box {
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8px;
-            margin: 0 auto 14px auto;
-            box-shadow: 0 10px 25px rgba(124, 45, 18, 0.18);
-        }
-
-        .logo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .hero h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
-            font-weight: 700;
-        }
-
-        .hero h2 {
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
-        .hero h1 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-
-        .hero p {
-            font-size: 14px;
-            line-height: 1.9;
-            color: #ffedd5;
-        }
-
-        /* بطاقات الإدخال */
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 16px;
-            box-shadow: var(--shadow);
-            margin-bottom: 14px;
-        }
-
-        .card h3 {
-            font-size: 17px;
-            color: #9a3412;
-            margin-bottom: 14px;
-        }
-
-        /* كل خانة إدخال */
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            margin-bottom: 12px;
-        }
-
-        .field:last-child {
-            margin-bottom: 0;
-        }
-
-        /* شبكة الخانات */
-        .field-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-
-        /* وضع ثلاث خانات جنبًا إلى جنب */
-        .field-grid.three {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-
-        .field-grid.three .field {
-            margin-bottom: 0;
-        }
-
-        .field-grid.three label {
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        .field-grid.three input,
-        .field-grid.three select {
-            padding: 12px 8px;
-            font-size: 15px;
-            border-radius: 14px;
-        }
-
-        label {
-            font-size: 14px;
-            font-weight: 700;
-            color: #7c2d12;
-        }
-
-        input,
-        select {
-            width: 100%;
-            border: 1px solid #fdba74;
-            background: #fff;
-            border-radius: 16px;
-            padding: 13px 14px;
-            font-size: 16px;
-            color: var(--text);
-            outline: none;
-            text-align: right;
-        }
-
-        input:focus,
-        select:focus {
-            border-color: var(--orange-1);
-            box-shadow: 0 0 0 4px var(--orange-4);
-        }
-
-        /* أزرار الحساب والضبط */
-        .buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        button {
-            border: none;
-            border-radius: 18px;
-            padding: 14px 14px;
-            font-size: 15px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s ease;
-        }
-
-        .btn-primary {
-            background: var(--orange-1);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #ea580c;
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--text);
-            border: 1px solid #fdba74;
-        }
-
-        .btn-secondary:hover {
-            background: #fff7ed;
-        }
-
-        /* قسم النتيجة مخفي في البداية */
-        .result-panel {
-            display: none;
-            margin-top: 18px;
-        }
-
-        /* يظهر بعد الضغط على احسب النتيجة */
-        .result-panel.show {
-            display: block;
-            animation: fadeUp 0.35s ease;
-        }
-
-        /* حركة ظهور النتيجة */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* بطاقة النتيجة باللون البرتقالي والكتابة بالأبيض */
-        .result-card {
-            background: linear-gradient(135deg, #ea580c, #f97316, #fb923c);
-            color: white;
-            border-radius: 32px;
-            padding: 24px 18px;
-            box-shadow: 0 18px 40px rgba(249, 115, 22, 0.28);
-        }
-
-        .result-title {
-            text-align: center;
-            color: white;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .result-total {
-            text-align: center;
-            font-size: 72px;
-            font-weight: 900;
-            line-height: 1;
-            color: white;
-            margin-bottom: 8px;
-        }
-
-        .result-unit {
-            text-align: center;
-            font-size: 18px;
-            margin-bottom: 18px;
-            color: white;
-        }
-
-        .result-divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.38);
-            margin: 10px 0 18px;
-        }
-
-        .stat-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 8px 0;
-        }
-
-        .stat-label {
-            font-size: 16px;
-            color: white;
-        }
-
-        .stat-value {
-            font-size: 18px;
-            font-weight: 800;
-            color: white;
-            min-width: 90px;
-            text-align: left;
-        }
-
-        /* أزرار المشاركة والحفظ والنسخ */
-        .small-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 14px;
-        }
-
-        .small-actions button {
-            background: white;
-            border: 1px solid #e5e7eb;
-            color: var(--text);
-            box-shadow: var(--shadow);
-            min-height: 74px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        /* أسفل الصفحة */
-        .footer {
-            text-align: center;
-            margin-top: 16px;
-            color: #7c2d12;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-
-        /* =========================================================
-           7) تحسين العرض على الهواتف الصغيرة
-           ========================================================= */
-        @media (max-width: 420px) {
-            .app {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .card {
-                padding: 14px 12px;
-            }
-
-            .field-grid.three {
-                gap: 6px;
-            }
-
-            .field-grid.three label {
-                font-size: 11px;
-            }
-
-            .field-grid.three input,
-            .field-grid.three select {
-                padding: 11px 6px;
-                font-size: 14px;
-                border-radius: 13px;
-            }
-
-            .top-title {
-                font-size: 20px;
-            }
-
-            .logo-box {
-                width: 86px;
-                height: 86px;
-                border-radius: 22px;
-            }
-
-            .hero h1 {
-                font-size: 22px;
-            }
-
-            .result-total {
-                font-size: 64px;
-            }
-
-            .stat-label {
-                font-size: 15px;
-            }
-
-            .stat-value {
-                font-size: 17px;
-                min-width: 76px;
-            }
-        }
-
-        /* =========================================================
-           8) تحسين العرض على الحاسوب واللوحات الكبيرة
-           ========================================================= */
-        @media (min-width: 700px) {
-            .app {
-                max-width: 950px;
-            }
-
-            .desktop-grid {
-                display: grid;
-                grid-template-columns: 1.2fr 0.9fr;
-                gap: 18px;
-                align-items: start;
-            }
-
-            .result-sticky {
-                position: sticky;
-                top: 16px;
-            }
-        }
-    </style>
+  <!-- =========================================================
+       1) إعدادات الصفحة الأساسية
+       ========================================================= -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f97316" />
+  <meta name="description" content="نقطتي للترقية: تطبيق تفاعلي لحساب مجموع نقط الترقية بالاختيار اعتماداً على الأقدمية العامة، الأقدمية في الدرجة ونقط التقييم، من إعداد المكتب الإقليمي لآسفي." />
+
+  <title>نقطتي للترقية | حساب نقط الترقية بالاختيار - المكتب الإقليمي لآسفي</title>
+
+  <!-- يجب وضع untm-logo.png في نفس مجلد ملف HTML -->
+  <link rel="icon" type="image/png" href="untm-logo.png" />
+  <link rel="canonical" href="https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/" />
+
+  <!-- =========================================================
+       2) إعدادات مشاركة رابط الموقع
+       ملاحظة:
+       بعد رفع الموقع إلى GitHub Pages يفضل تعويض og:image
+       برابط مطلق للصورة، مثلا:
+       https://USERNAME.github.io/REPOSITORY/untm-logo.png
+       ========================================================= -->
+  <!-- =========================================================
+       2) بطاقة المعاينة عند مشاركة رابط التطبيق
+       =========================================================
+
+       مهم جدا:
+       WhatsApp لا يعرض هذه البطاقة عند مشاركة ملف HTML محلي
+       أو رابط content://. يجب نشر الصفحة على رابط HTTPS عمومي.
+
+       بعد النشر:
+       استبدل النص https://abdeslamlachhab.github.io/calculNote-UNTM-Safi أدناه بالرابط الأساسي للموقع
+       مثال:
+       https://username.github.io/calculNote-UNTM-Safi
+
+       يجب كذلك رفع share-preview.png بجانب index.html.
+       ========================================================= -->
+  <meta name="application-name" content="نقطتي للترقية" />
+  <meta name="apple-mobile-web-app-title" content="نقطتي للترقية" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ar_MA" />
+  <meta property="og:site_name"
+        content="الجامعة الوطنية لموظفي التعليم - المكتب الإقليمي لآسفي" />
+
+  <meta property="og:title"
+        content="نقطتي للترقية | المكتب الإقليمي لآسفي" />
+
+  <meta property="og:description"
+        content="تطبيق تفاعلي لحساب مجموع نقط الترقية بالاختيار اعتماداً على الأقدمية العامة، الأقدمية في الدرجة ونقط التقييم." />
+
+  <!-- يجب أن يكونا رابطين مطلقين بعد النشر -->
+  <meta property="og:url"
+        content="https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/" />
+  <meta property="og:image"
+        content="https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/share-preview.png" />
+  <meta property="og:image:secure_url"
+        content="https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/share-preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"
+        content="نقطتي للترقية - المكتب الإقليمي لآسفي" />
+
+  <!-- بطاقة X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title"
+        content="نقطتي للترقية | المكتب الإقليمي لآسفي" />
+  <meta name="twitter:description"
+        content="تطبيق تفاعلي لحساب مجموع نقط الترقية بالاختيار." />
+  <meta name="twitter:image"
+        content="https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/share-preview.png" />
+
+  <!-- =========================================================
+       3) مكتبة تحويل بطاقة النتيجة إلى صورة
+       تستعمل للحفظ والمشاركة عبر WhatsApp أو تطبيقات الهاتف
+       ========================================================= -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+  <style>
+    /* =========================================================
+       4) الألوان والإعدادات العامة
+       ========================================================= */
+    :root {
+      --orange: #f97316;
+      --orange-dark: #c2410c;
+      --orange-deep: #9a3412;
+      --orange-soft: #fff7ed;
+      --orange-border: #fdba74;
+      --yellow: #fbbf24;
+      --yellow-soft: #fffbeb;
+      --text: #172033;
+      --muted: #64748b;
+      --danger: #b91c1c;
+      --success: #15803d;
+      --card: #ffffff;
+      --page: #fffaf5;
+      --shadow: 0 8px 25px rgba(124, 45, 18, .09);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(251, 146, 60, .14), transparent 28%),
+        linear-gradient(180deg, #fff 0%, var(--page) 45%, #fff 100%);
+      font-family: Tahoma, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* =========================================================
+       5) رأس الصفحة
+       التصميم موجه أساسا للهاتف
+       ========================================================= */
+    .topbar {
+      background: linear-gradient(135deg, #ea580c, #fb923c);
+      color: #fff;
+      border-radius: 0 0 28px 28px;
+      box-shadow: 0 8px 22px rgba(234, 88, 12, .20);
+    }
+
+    .topbar-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 14px 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .top-logo {
+      width: 60px;
+      height: 60px;
+      flex: 0 0 60px;
+      padding: 5px;
+      background: #fff;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(124, 45, 18, .18);
+    }
+
+    .top-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .top-logo-fallback {
+      display: none;
+      color: var(--orange-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .top-text {
+      min-width: 0;
+    }
+
+    .top-text h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.35;
+      font-weight: 900;
+    }
+
+    .top-text p {
+      margin: 3px 0 0;
+      color: #ffedd5;
+      font-size: 11.5px;
+      line-height: 1.55;
+    }
+
+    /* =========================================================
+       6) الحاوية الرئيسية
+       ========================================================= */
+    .app {
+      width: min(100%, 720px);
+      margin: 0 auto;
+      padding: 13px 10px 28px;
+    }
+
+    .intro {
+      margin-bottom: 11px;
+      padding: 11px 13px;
+      border: 1px solid #fed7aa;
+      border-radius: 17px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.75;
+    }
+
+    .intro strong {
+      color: var(--orange-deep);
+    }
+
+    /* =========================================================
+       زر مشاركة التطبيق كرابط
+       هذا الزر يشارك رابط الصفحة نفسها، وليس ملف HTML.
+       ========================================================= */
+    .app-share-box {
+      margin-bottom: 11px;
+      padding: 10px 11px;
+      border-radius: 16px;
+      border: 1px solid #fed7aa;
+      background: linear-gradient(135deg, #fff7ed, #ffffff);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      box-shadow: var(--shadow);
+    }
+
+    .app-share-text {
+      flex: 1;
+      min-width: 0;
+      color: #7c2d12;
+      font-size: 11.5px;
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .app-share-button {
+      flex: 0 0 auto;
+      min-height: 42px;
+      border: 0;
+      border-radius: 13px;
+      padding: 8px 13px;
+      background: #f97316;
+      color: #fff;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    /* =========================================================
+       7) البطاقات
+       ========================================================= */
+    .card {
+      background: var(--card);
+      border: 1px solid #fed7aa;
+      border-radius: var(--radius);
+      padding: 14px 12px;
+      box-shadow: var(--shadow);
+      margin-bottom: 11px;
+    }
+
+    .card-title {
+      margin: 0 0 11px;
+      color: var(--orange-deep);
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 900;
+    }
+
+    .card-subtitle {
+      margin: -5px 0 10px;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       8) الحقول العامة
+       ========================================================= */
+    label {
+      display: block;
+      color: #7c2d12;
+      font-size: 11.5px;
+      font-weight: 800;
+      line-height: 1.45;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    input,
+    select {
+      width: 100%;
+      min-width: 0;
+      height: 48px;
+      padding: 7px 8px;
+      border: 1px solid var(--orange-border);
+      border-radius: 14px;
+      background: #fff;
+      color: var(--text);
+      outline: none;
+      text-align: center;
+      font-size: 15px;
+      transition: border-color .16s ease, box-shadow .16s ease;
+    }
+
+    select {
+      appearance: auto;
+      -webkit-appearance: menulist;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px #ffedd5;
+    }
+
+    input.invalid,
+    select.invalid {
+      border-color: #ef4444;
+      background: #fff7f7;
+    }
+
+    /* سنة الترقي */
+    .promotion-year-wrap {
+      max-width: 100%;
+    }
+
+    .promotion-year-wrap label {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .promotion-year-wrap input {
+      text-align: right;
+      padding-right: 14px;
+      font-size: 18px;
+    }
+
+    /* =========================================================
+       9) التاريخ في سطر واحد
+       السنة + الشهر + اليوم
+       ========================================================= */
+    .date-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 1.12fr .78fr;
+      gap: 7px;
+      align-items: end;
+    }
+
+    .date-field {
+      min-width: 0;
+    }
+
+    /* =========================================================
+       10) النقط الثلاث في سطر واحد
+       ========================================================= */
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+      align-items: end;
+    }
+
+    .score-field {
+      min-width: 0;
+    }
+
+    .scores-grid label {
+      font-size: 10.5px;
+      min-height: 31px;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+    }
+
+    .scores-grid input {
+      font-size: 16px;
+      padding-inline: 5px;
+    }
+
+    .evaluation-preview {
+      display: none;
+      margin-top: 9px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: var(--orange-soft);
+      color: var(--orange-deep);
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .evaluation-preview.show {
+      display: block;
+    }
+
+    /* =========================================================
+       11) رسائل الخطأ
+       ========================================================= */
+    .field-error {
+      display: none;
+      margin-top: 7px;
+      color: var(--danger);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .field-error.show {
+      display: block;
+    }
+
+    /* =========================================================
+       12) زر إعادة الضبط
+       لا يوجد زر حساب لأن الحساب أوتوماتيكي
+       ========================================================= */
+    .reset-row {
+      margin: 3px 0 13px;
+    }
+
+    .btn {
+      width: 100%;
+      min-height: 48px;
+      border: 0;
+      border-radius: 15px;
+      padding: 11px 13px;
+      cursor: pointer;
+      font-weight: 900;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+
+    .btn:active {
+      transform: scale(.985);
+    }
+
+    .btn-reset {
+      background: #fff;
+      color: var(--orange-deep);
+      border: 1px solid var(--orange-border);
+    }
+
+    /* =========================================================
+       13) النتيجة
+       النتيجة غير موجودة بصريا حتى تكتمل جميع الخانات
+       ========================================================= */
+    #resultSection {
+      display: none;
+      margin-top: 2px;
+      margin-bottom: 13px;
+    }
+
+    #resultSection.show {
+      display: block;
+      animation: resultIn .28s ease;
+    }
+
+    @keyframes resultIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .result-card {
+      position: relative;
+      overflow: hidden;
+      color: #fff;
+      background: linear-gradient(135deg, #c2410c 0%, #f97316 55%, #fb923c 100%);
+      border-radius: 24px;
+      padding: 16px 14px 15px;
+      box-shadow: 0 14px 30px rgba(234, 88, 12, .24);
+    }
+
+    .result-card::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      top: -95px;
+      left: -65px;
+      pointer-events: none;
+    }
+
+    .result-brand {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin-bottom: 11px;
+    }
+
+    .result-logo {
+      width: 56px;
+      height: 56px;
+      flex: 0 0 56px;
+      border-radius: 15px;
+      background: #fff;
+      padding: 5px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .result-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .result-logo-fallback {
+      display: none;
+      color: var(--orange-dark);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .result-org {
+      text-align: right;
+      line-height: 1.55;
+    }
+
+    .result-org strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .result-org span {
+      display: block;
+      font-size: 10px;
+      color: #ffedd5;
+    }
+
+    .result-divider {
+      height: 1px;
+      background: rgba(255, 255, 255, .28);
+      margin: 9px 0 12px;
+    }
+
+    .result-title {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffedd5;
+    }
+
+    .result-total {
+      margin: 4px 0 2px;
+      text-align: center;
+      font-size: 58px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .result-unit {
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 12px;
+      color: #fff7ed;
+    }
+
+    .result-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .result-stat {
+      padding: 8px 5px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .14);
+      text-align: center;
+      min-width: 0;
+    }
+
+    .result-stat b {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .result-stat span {
+      display: block;
+      font-size: 9.5px;
+      line-height: 1.45;
+      color: #fff7ed;
+    }
+
+    .result-details {
+      margin-top: 9px;
+      border-top: 1px solid rgba(255, 255, 255, .24);
+      padding-top: 8px;
+    }
+
+    .result-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 3px 0;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .result-line span:last-child {
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .result-footer {
+      margin-top: 9px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, .22);
+      text-align: center;
+      color: #ffedd5;
+      font-size: 9.5px;
+      line-height: 1.5;
+    }
+
+    /* أزرار النتيجة */
+    .result-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 9px;
+    }
+
+    .result-actions button {
+      min-height: 46px;
+      border: 1px solid #fed7aa;
+      border-radius: 14px;
+      background: #fff;
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+      padding: 9px 7px;
+      font-size: 12px;
+    }
+
+    .result-actions button:disabled {
+      opacity: .55;
+      cursor: default;
+    }
+
+    /* =========================================================
+       14) جدول المعنيين بالترقية في الرتبة
+       تم تصميمه كي يبقى مقروءا على الهاتف دون تمرير أفقي
+       ========================================================= */
+    .eligibility-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .eligibility-card details {
+      display: block;
+    }
+
+    .eligibility-card summary {
+      list-style: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ea580c, #f97316);
+      color: #fff;
+      padding: 13px 12px;
+      font-size: 14px;
+      font-weight: 900;
+      line-height: 1.55;
+      position: relative;
+    }
+
+    .eligibility-card summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .eligibility-card summary::after {
+      content: "⌄";
+      float: left;
+      font-size: 18px;
+      line-height: 1;
+      transition: transform .2s ease;
+    }
+
+    .eligibility-card details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .table-wrap {
+      padding: 9px 7px 11px;
+      background: #fff;
+    }
+
+    .table-section-title {
+      margin: 3px 0 7px;
+      padding: 7px 7px;
+      border-radius: 9px;
+      background: var(--yellow);
+      color: #111827;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+
+    .promotion-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin-bottom: 10px;
+      font-size: 10.3px;
+      line-height: 1.5;
+    }
+
+    .promotion-table col.rank {
+      width: 36%;
+    }
+
+    .promotion-table col.years {
+      width: 14%;
+    }
+
+    .promotion-table col.condition {
+      width: 50%;
+    }
+
+    .promotion-table th,
+    .promotion-table td {
+      border: 1px solid #374151;
+      padding: 6px 4px;
+      text-align: center;
+      vertical-align: middle;
+      overflow-wrap: anywhere;
+    }
+
+    .promotion-table thead th {
+      background: var(--orange);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .promotion-table .scale-head th {
+      background: var(--yellow);
+      color: #111827;
+      font-size: 12px;
+      padding: 5px;
+    }
+
+    .promotion-table td:nth-child(2) {
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    .table-note {
+      margin-top: 8px;
+      border: 1px solid var(--orange);
+      border-radius: 11px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .table-note strong {
+      display: block;
+      width: max-content;
+      min-width: 92px;
+      margin-right: auto;
+      padding: 5px 12px;
+      border-radius: 0 0 0 11px;
+      background: var(--orange);
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .table-note p {
+      margin: 0;
+      padding: 8px 9px 10px;
+      color: #374151;
+      font-size: 10.5px;
+      line-height: 1.7;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .cohorts {
+      margin-top: 8px;
+      padding: 8px 8px;
+      border-radius: 10px;
+      background: var(--orange);
+      color: #fff;
+      text-align: center;
+      font-size: 10.5px;
+      line-height: 1.6;
+      font-weight: 800;
+    }
+
+    /* =========================================================
+       15) التنبيهات الصغيرة
+       ========================================================= */
+    .toast {
+      position: fixed;
+      z-index: 9999;
+      right: 50%;
+      transform: translateX(50%) translateY(15px);
+      bottom: calc(18px + env(safe-area-inset-bottom));
+      max-width: calc(100vw - 30px);
+      padding: 10px 13px;
+      border-radius: 13px;
+      background: #172033;
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, .22);
+      font-size: 12px;
+      line-height: 1.5;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(50%) translateY(0);
+    }
+
+    .footer {
+      padding: 13px 8px 2px;
+      text-align: center;
+      color: #9a3412;
+      font-size: 10.5px;
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       16) الهواتف الصغيرة جدا
+       ========================================================= */
+    @media (max-width: 365px) {
+      .app {
+        padding-inline: 7px;
+      }
+
+      .card {
+        padding-inline: 9px;
+      }
+
+      .date-grid,
+      .scores-grid {
+        gap: 5px;
+      }
+
+      label {
+        font-size: 10.5px;
+      }
+
+      .scores-grid label {
+        font-size: 9.5px;
+      }
+
+      input,
+      select {
+        height: 45px;
+        padding-inline: 5px;
+        font-size: 14px;
+      }
+
+      .promotion-table {
+        font-size: 9.5px;
+      }
+
+      .promotion-table th,
+      .promotion-table td {
+        padding: 5px 3px;
+      }
+    }
+
+    /* =========================================================
+       17) الشاشات الأكبر
+       تبقى الواجهة في عمود واحد لأنها مصممة أساسا للهاتف
+       ========================================================= */
+    @media (min-width: 700px) {
+      .app {
+        padding-top: 18px;
+      }
+
+      .card {
+        padding: 17px 16px;
+      }
+
+      .promotion-table {
+        font-size: 12px;
+      }
+
+      .result-card {
+        padding-inline: 20px;
+      }
+    }
+
+    /* =========================================================
+       18) الطباعة
+       تطبع بطاقة النتيجة فقط مع شعار النقابة
+       ========================================================= */
+    @media print {
+      @page {
+        margin: 12mm;
+      }
+
+      body {
+        background: #fff !important;
+      }
+
+      body * {
+        visibility: hidden !important;
+      }
+
+      #resultCapture,
+      #resultCapture * {
+        visibility: visible !important;
+      }
+
+      #resultCapture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 560px;
+        margin: 0 auto;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        box-shadow: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- =========================================================
+       19) رأس الصفحة
+       ========================================================= -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="top-logo" aria-label="شعار الاتحاد الوطني للشغل بالمغرب">
+        <img src="untm-logo.png" alt="لوغو النقابة"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <span class="top-logo-fallback">UNTM</span>
+      </div>
+
+      <div class="top-text">
+        <h1>نقطتي للترقية</h1>
+        <p>الجامعة الوطنية لموظفي التعليم — المكتب الإقليمي لآسفي</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="app">
+    <!-- =========================================================
+         20) ملاحظة الاستعمال
+         ========================================================= -->
+    <section class="intro">
+      <strong>الحساب تلقائي:</strong>
+      أدخل جميع المعطيات المطلوبة، وستظهر النتيجة مباشرة بعد استكمال
+      آخر خانة.
+    </section>
+
+    <!-- مشاركة التطبيق كرابط عام مع بطاقة WhatsApp -->
+    <section class="app-share-box" aria-label="مشاركة التطبيق">
+      <div class="app-share-text">
+        شارك التطبيق كرابط ليظهر اسمه، شعاره وهدفه في WhatsApp.
+      </div>
+      <button type="button" id="shareAppBtn" class="app-share-button">
+        مشاركة التطبيق
+      </button>
+    </section>
 
     <!-- =========================================================
-         9) الشريط العلوي
+         21) سنة الترقي
+         السنة الافتراضية = 2025
          ========================================================= -->
-    <div class="top-band">
-        <div class="top-title">نقطتي للترقية</div>
+    <section class="card">
+      <h2 class="card-title">سنة الترقي المطلوبة</h2>
+
+      <div class="promotion-year-wrap">
+        <label for="promotionYear">سنة الترقي</label>
+        <input type="number" id="promotionYear" min="2024" max="2100" inputmode="numeric" autocomplete="off" />
+      </div>
+
+      <div id="promotionYearError" class="field-error"></div>
+    </section>
+
+    <!-- =========================================================
+         22) الأقدمية العامة
+         السنة والشهر واليوم في نفس السطر
+         ========================================================= -->
+    <section class="card">
+      <h2 class="card-title">الأقدمية العامة / تاريخ التعيين أو الترسيم</h2>
+
+      <div class="date-grid">
+        <div class="date-field">
+          <label for="adminYear">السنة</label>
+          <input type="number" id="adminYear" min="1950" max="2100" inputmode="numeric" autocomplete="off"
+            placeholder="2011" />
+        </div>
+
+        <div class="date-field">
+          <label for="adminMonth">الشهر</label>
+          <select id="adminMonth" aria-label="شهر التعيين أو الترسيم"></select>
+        </div>
+
+        <div class="date-field">
+          <label for="adminDay">اليوم</label>
+          <input type="number" id="adminDay" min="1" max="31" inputmode="numeric" autocomplete="off" placeholder="1" />
+        </div>
+      </div>
+
+      <div id="adminDateError" class="field-error"></div>
+    </section>
+
+    <!-- =========================================================
+         23) الأقدمية في الدرجة / السلم
+         ========================================================= -->
+    <section class="card">
+      <h2 class="card-title">الأقدمية في الدرجة / السلم الحالي</h2>
+
+      <div class="date-grid">
+        <div class="date-field">
+          <label for="gradeYear">السنة</label>
+          <input type="number" id="gradeYear" min="1950" max="2100" inputmode="numeric" autocomplete="off"
+            placeholder="2020" />
+        </div>
+
+        <div class="date-field">
+          <label for="gradeMonth">الشهر</label>
+          <select id="gradeMonth" aria-label="شهر الأقدمية في الدرجة"></select>
+        </div>
+
+        <div class="date-field">
+          <label for="gradeDay">اليوم</label>
+          <input type="number" id="gradeDay" min="1" max="31" inputmode="numeric" autocomplete="off" placeholder="1" />
+        </div>
+      </div>
+
+      <div id="gradeDateError" class="field-error"></div>
+    </section>
+
+    <!-- =========================================================
+         24) نقط التقييم الثلاث في نفس السطر
+         ========================================================= -->
+    <section class="card">
+      <h2 class="card-title">نقط التقييم</h2>
+
+      <div class="scores-grid">
+        <div class="score-field">
+          <label for="directorScore">رئيس المؤسسة</label>
+          <input type="number" id="directorScore" min="0" max="20" step="0.25" inputmode="decimal" autocomplete="off"
+            placeholder="20" />
+        </div>
+
+        <div class="score-field">
+          <label for="inspectorScore">المفتش التربوي</label>
+          <input type="number" id="inspectorScore" min="0" max="20" step="0.25" inputmode="decimal" autocomplete="off"
+            placeholder="20" />
+        </div>
+
+        <div class="score-field">
+          <label for="regionalDirectorScore">المدير الإقليمي</label>
+          <input type="number" id="regionalDirectorScore" min="0" max="20" step="0.25" inputmode="decimal"
+            autocomplete="off" placeholder="20" />
+        </div>
+      </div>
+
+      <div id="evaluationError" class="field-error"></div>
+
+      <div id="evaluationPreview" class="evaluation-preview">
+        مجموع نقط التقييم:
+        <span id="evaluationPreviewValue">0</span>
+        / 60
+      </div>
+    </section>
+
+    <!-- لا يوجد زر "احسب" لأن النتيجة تظهر أوتوماتيكيا -->
+    <div class="reset-row">
+      <button type="button" id="resetBtn" class="btn btn-reset">
+        إعادة الضبط
+      </button>
     </div>
 
-    <main class="app">
+    <!-- =========================================================
+         25) قسم النتيجة
+         مخفي بالكامل إلى أن تكتمل جميع الخانات
+         ========================================================= -->
+    <section id="resultSection" aria-live="polite">
+      <!-- هذه البطاقة هي التي تحول إلى صورة عند الحفظ أو المشاركة -->
+      <div id="resultCapture" class="result-card">
+        <div class="result-brand">
+          <div class="result-logo">
+            <img id="resultLogo" src="untm-logo.png" alt="لوغو النقابة"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="result-logo-fallback">UNTM</span>
+          </div>
 
-        <!-- =========================================================
-             10) بطاقة التعريف بالتطبيق
-             ========================================================= -->
-        <section class="hero">
-            <div class="logo-box">
-                <img src="untm-logo.png" alt="لوغو النقابة">
-            </div>
-
-            <h2>الإتحاد الوطني للشغل بالمغرب</h2>
-            <h2>الجامعة الوطنية لموظفي التعليم</h2>
-            <h1>المكتب الإقليمي لآسفي</h1>
-            <h3>نقطتي للترقية</h3>
-
-            <p>
-                تطبيق مبسط لحساب مجموع نقط الترقية بالاختيار، اعتمادًا على
-                الأقدمية العامة، الأقدمية في الدرجة، ونقط التقييم.
-            </p>
-        </section>
-
-        <!-- =========================================================
-             11) شبكة الصفحة: الإدخال + النتيجة
-             ========================================================= -->
-        <div class="desktop-grid">
-
-            <!-- =====================================================
-                 12) قسم إدخال المعطيات
-                 ===================================================== -->
-            <section>
-
-                <!-- سنة الترقي -->
-                <div class="card">
-                    <div class="field">
-                        <label for="promotionYear">سنة الترقي المطلوبة</label>
-                        <input type="number" id="promotionYear" min="2024" max="2100" inputmode="numeric" />
-                    </div>
-                </div>
-
-                <!-- الأقدمية العامة -->
-                <div class="card">
-                    <h3>الأقدمية العامة / تاريخ التعيين أو الترسيم</h3>
-
-                    <div class="field-grid three">
-                        <div class="field">
-                            <label for="adminYear">السنة</label>
-                            <input type="number" id="adminYear" min="1950" max="2100" inputmode="numeric" />
-                        </div>
-
-                        <div class="field">
-                            <label for="adminMonth">الشهر</label>
-                            <select id="adminMonth"></select>
-                        </div>
-
-                        <div class="field">
-                            <label for="adminDay">اليوم</label>
-                            <input type="number" id="adminDay" min="1" max="31" inputmode="numeric" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- الأقدمية في الدرجة -->
-                <div class="card">
-                    <h3>الأقدمية في الدرجة / السلم الحالي</h3>
-
-                    <div class="field-grid three">
-                        <div class="field">
-                            <label for="gradeYear">السنة</label>
-                            <input type="number" id="gradeYear" min="1950" max="2100" inputmode="numeric" />
-                        </div>
-
-                        <div class="field">
-                            <label for="gradeMonth">الشهر</label>
-                            <select id="gradeMonth"></select>
-                        </div>
-
-                        <div class="field">
-                            <label for="gradeDay">اليوم</label>
-                            <input type="number" id="gradeDay" min="1" max="31" inputmode="numeric" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- نقط التقييم -->
-                <div class="card">
-                    <h3>نقط التقييم</h3>
-
-                    <div class="field-grid three">
-                        <div class="field">
-                            <label for="directorScore">نقطة رئيس المؤسسة</label>
-                            <input type="number" id="directorScore" min="0" max="20" step="0.25" inputmode="decimal" />
-                        </div>
-
-                        <div class="field">
-                            <label for="inspectorScore">نقطة المفتش التربوي</label>
-                            <input type="number" id="inspectorScore" min="0" max="20" step="0.25" inputmode="decimal" />
-                        </div>
-
-                        <div class="field">
-                            <label for="regionalDirectorScore">نقطة المدير الإقليمي</label>
-                            <input type="number" id="regionalDirectorScore" min="0" max="20" step="0.25"
-                                inputmode="decimal" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- أزرار الحساب والضبط -->
-                <div class="buttons">
-                    <button class="btn-primary" onclick="showResult()">احسب النتيجة</button>
-                    <button class="btn-secondary" onclick="resetForm()">إعادة الضبط</button>
-                </div>
-            </section>
-
-            <!-- =====================================================
-                 13) قسم عرض النتيجة
-                 ===================================================== -->
-            <section class="result-sticky">
-                <div id="resultPanel" class="result-panel">
-
-                    <!-- بطاقة النتيجة التي تحفظ كصورة -->
-                    <div id="resultCapture" class="result-card">
-                        <div class="result-title">المجموع الكلي للنقط</div>
-                        <div class="result-total" id="totalPoints">0</div>
-                        <div class="result-unit">نقطة</div>
-
-                        <div class="result-divider"></div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">سنوات الأقدمية العامة</span>
-                            <span class="stat-value" id="rAdminYears">0 سنة</span>
-                        </div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">نقط الأقدمية العامة</span>
-                            <span class="stat-value" id="rAdminPoints">0</span>
-                        </div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">سنوات الدرجة</span>
-                            <span class="stat-value" id="rGradeYears">0 سنة</span>
-                        </div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">نقط الدرجة (2×)</span>
-                            <span class="stat-value" id="rGradePoints">0</span>
-                        </div>
-
-                        <div class="stat-row">
-                            <span class="stat-label">النقطة الإدارية</span>
-                            <span class="stat-value" id="rEvaluationPoints">0</span>
-                        </div>
-                    </div>
-
-                    <!-- أزرار التعامل مع النتيجة -->
-                    <div class="small-actions">
-                        <button onclick="shareResultGeneral()">مشاركة النتيجة</button>
-                        <button onclick="saveResultAsImage()">حفظ كصورة</button>
-                        <button onclick="copyResult()">نسخ النتيجة</button>
-                        <button onclick="resetForm()">إعادة الحساب</button>
-                    </div>
-                </div>
-            </section>
+          <div class="result-org">
+            <strong>الجامعة الوطنية لموظفي التعليم</strong>
+            <span>الاتحاد الوطني للشغل بالمغرب — المكتب الإقليمي لآسفي</span>
+          </div>
         </div>
 
-        <!-- =========================================================
-             14) أسفل الصفحة
-             ========================================================= -->
-        <div class="footer">
-            جميع الحقوق محفوظة — الجامعة الوطنية لموظفي التعليم — المكتب الإقليمي لآسفي
+        <div class="result-divider"></div>
+
+        <div class="result-title">
+          المجموع الكلي لنقط الترقية — سنة
+          <span id="resultYear">2025</span>
         </div>
-    </main>
+
+        <div id="totalPoints" class="result-total">0</div>
+        <div class="result-unit">نقطة</div>
+
+        <div class="result-stats">
+          <div class="result-stat">
+            <b id="statAdminPoints">0</b>
+            <span>نقط الأقدمية العامة</span>
+          </div>
+
+          <div class="result-stat">
+            <b id="statGradePoints">0</b>
+            <span>نقط الأقدمية في الدرجة</span>
+          </div>
+
+          <div class="result-stat">
+            <b id="statEvaluation">0</b>
+            <span>نقط التقييم</span>
+          </div>
+        </div>
+
+        <div class="result-details">
+          <div class="result-line">
+            <span>سنوات الأقدمية العامة</span>
+            <span id="adminYearsResult">0 سنة</span>
+          </div>
+
+          <div class="result-line">
+            <span>سنوات الأقدمية في الدرجة</span>
+            <span id="gradeYearsResult">0 سنة</span>
+          </div>
+
+          <div class="result-line">
+            <span>نقط الدرجة (2 × عدد السنوات)</span>
+            <span id="gradePointsResult">0</span>
+          </div>
+        </div>
+
+        <div class="result-footer">
+          نقطتي للترقية — المكتب الإقليمي لآسفي
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <button type="button" id="shareBtn">مشاركة / WhatsApp</button>
+        <button type="button" id="saveBtn">حفظ كصورة</button>
+        <button type="button" id="copyBtn">نسخ النتيجة</button>
+        <button type="button" id="printBtn">طباعة النتيجة</button>
+      </div>
+    </section>
 
     <!-- =========================================================
-         15) JavaScript: منطق الحساب والمشاركة
+         26) جدول المعنيين بالترقية في الرتبة برسم سنة 2026
+         محتوى الجدول من الصورة المرفقة من طرف المستخدم.
          ========================================================= -->
-    <script>
-        /* سنة الترقي الافتراضية */
-        const defaultPromotionYear = 2025;
+    <section class="card eligibility-card">
+      <details open>
+        <summary>المعنيون بالترقية في الرتبة برسم سنة 2026</summary>
 
-        /* السنة الحالية تستعمل فقط لوضع قيم افتراضية للأقدمية */
-        const currentYear = new Date().getFullYear();
+        <div class="table-wrap">
+          <div class="table-section-title">
+            المرتبون على السلالم من 10 و 11
+          </div>
 
-        /* تخزين آخر نتيجة محسوبة */
-        let lastResult = null;
+          <table class="promotion-table">
+            <colgroup>
+              <col class="rank">
+              <col class="years">
+              <col class="condition">
+            </colgroup>
 
-        /* أسماء الشهور بالعربية */
-        const months = [
-            "يناير", "فبراير", "مارس", "أبريل", "ماي", "يونيو",
-            "يوليوز", "غشت", "شتنبر", "أكتوبر", "نونبر", "دجنبر"
-        ];
+            <thead>
+              <tr>
+                <th>الرتبة</th>
+                <th>عدد السنوات</th>
+                <th>شروط الترقي</th>
+              </tr>
+            </thead>
 
-        /* تعبئة لائحة الشهور في الخانات */
-        function fillMonths() {
-            const adminMonth = document.getElementById("adminMonth");
-            const gradeMonth = document.getElementById("gradeMonth");
+            <tbody>
+              <tr>
+                <td>من الرتبة 2 إلى الرتبة 3</td>
+                <td>1</td>
+                <td>الترقي على أقدمية في الرتبة 2 منذ سنة 2025</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 3 إلى الرتبة 4</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 3 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 4 إلى الرتبة 5</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 4 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 5 إلى الرتبة 6</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 5 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 6 إلى الرتبة 7</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 6 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 7 إلى الرتبة 8</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 7 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 8 إلى الرتبة 9</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 8 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 9 إلى الرتبة 10</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 9 منذ سنة 2024</td>
+              </tr>
+            </tbody>
+          </table>
 
-            adminMonth.innerHTML = "";
-            gradeMonth.innerHTML = "";
+          <div class="table-section-title">
+            بالنسبة للترقية الاستثنائية في السلمين 10 و 11
+          </div>
 
-            months.forEach((month, index) => {
-                const option1 = document.createElement("option");
-                option1.value = index + 1;
-                option1.textContent = month;
-                adminMonth.appendChild(option1);
+          <!-- السلم 10 -->
+          <table class="promotion-table">
+            <colgroup>
+              <col class="rank">
+              <col class="years">
+              <col class="condition">
+            </colgroup>
 
-                const option2 = document.createElement("option");
-                option2.value = index + 1;
-                option2.textContent = month;
-                gradeMonth.appendChild(option2);
+            <thead class="scale-head">
+              <tr>
+                <th colspan="3">السلم 10</th>
+              </tr>
+            </thead>
+
+            <thead>
+              <tr>
+                <th>الرتبة</th>
+                <th>عدد السنوات</th>
+                <th>شروط الترقي</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>من الرتبة 10 إلى الرتبة 11</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 10 منذ سنة 2024</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- السلم 11 -->
+          <table class="promotion-table">
+            <colgroup>
+              <col class="rank">
+              <col class="years">
+              <col class="condition">
+            </colgroup>
+
+            <thead class="scale-head">
+              <tr>
+                <th colspan="3">السلم 11</th>
+              </tr>
+            </thead>
+
+            <thead>
+              <tr>
+                <th>الرتبة</th>
+                <th>عدد السنوات</th>
+                <th>شروط الترقي</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>من الرتبة 10 إلى الرتبة 11</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 10 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 11 إلى الرتبة 12</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 11 منذ سنة 2024</td>
+              </tr>
+              <tr>
+                <td>من الرتبة 12 إلى الرتبة 13</td>
+                <td>2</td>
+                <td>الترقي على أقدمية في الرتبة 12 منذ سنة 2024</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="table-note">
+            <strong>ملاحظة:</strong>
+            <p>
+              يتم تهيئ مطبوع الترقية دون انتظار تحديد الوضعية الإدارية،
+              على موقع تبليغ أو موقع الخزينة العامة.
+            </p>
+          </div>
+
+          <div class="cohorts">
+            المعنيون بالترقية: أفواج ما بعد:
+            2016، 2018، 2020، 2024، 2025 (ترسيم)
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <div class="footer">
+      جميع الحقوق محفوظة — الجامعة الوطنية لموظفي التعليم —
+      المكتب الإقليمي لآسفي
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* =========================================================
+       27) الإعدادات العامة
+       ========================================================= */
+
+    /* سنة الترقي الافتراضية كما طلب المستخدم */
+    const DEFAULT_PROMOTION_YEAR = 2025;
+
+    /* مفتاح مستقل لهذه النسخة حتى لا تسترجع قيما من النسخ السابقة */
+    const STORAGE_KEY = "untm_safi_promotion_calculator_v5_share";
+
+    /* النص الذي يظهر مع رابط التطبيق عند المشاركة */
+    const APP_SHARE_TITLE =
+      "نقطتي للترقية | المكتب الإقليمي لآسفي";
+
+    const APP_SHARE_DESCRIPTION =
+      "تطبيق تفاعلي لحساب مجموع نقط الترقية بالاختيار اعتماداً على الأقدمية العامة، الأقدمية في الدرجة ونقط التقييم.";
+
+    /* الرابط العمومي النهائي للتطبيق */
+    const PUBLIC_APP_URL =
+      "https://abdeslamlachhab.github.io/calculNote-UNTM-Safi/";
+
+    /* تخزين آخر نتيجة صحيحة */
+    let lastResult = null;
+
+    /* لمعرفة هل ظهرت النتيجة للتو حتى ننزل إليها مرة واحدة فقط */
+    let resultWasVisible = false;
+
+    const months = [
+      "يناير", "فبراير", "مارس", "أبريل", "ماي", "يونيو",
+      "يوليوز", "غشت", "شتنبر", "أكتوبر", "نونبر", "دجنبر"
+    ];
+
+    const $ = id => document.getElementById(id);
+
+    /* جميع الخانات التي يجب أن يملأها المستخدم */
+    const requiredIds = [
+      "adminYear", "adminMonth", "adminDay",
+      "gradeYear", "gradeMonth", "gradeDay",
+      "directorScore", "inspectorScore", "regionalDirectorScore"
+    ];
+
+    /* =========================================================
+       28) تعبئة لائحة الشهور
+       الخيار الأول فارغ حتى لا تعتبر الخانة مكتملة تلقائيا
+       ========================================================= */
+    function fillMonthSelect(selectId) {
+      const select = $(selectId);
+      select.innerHTML = "";
+
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "الشهر";
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      select.appendChild(placeholder);
+
+      months.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = String(index + 1);
+        option.textContent = month;
+        select.appendChild(option);
+      });
+    }
+
+    fillMonthSelect("adminMonth");
+    fillMonthSelect("gradeMonth");
+
+    /* =========================================================
+       29) أدوات صغيرة
+       ========================================================= */
+    function formatNumber(value) {
+      const number = Number(value);
+      if (!Number.isFinite(number)) return "0";
+      return Number.isInteger(number)
+        ? String(number)
+        : number.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+    }
+
+    function showToast(message) {
+      const toast = $("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2300);
+    }
+
+    function hideResult() {
+      $("resultSection").classList.remove("show");
+      lastResult = null;
+      resultWasVisible = false;
+    }
+
+    function clearVisualErrors() {
+      [
+        "promotionYearError",
+        "adminDateError",
+        "gradeDateError",
+        "evaluationError"
+      ].forEach(id => {
+        $(id).textContent = "";
+        $(id).classList.remove("show");
+      });
+
+      [
+        "promotionYear",
+        "adminYear", "adminMonth", "adminDay",
+        "gradeYear", "gradeMonth", "gradeDay",
+        "directorScore", "inspectorScore", "regionalDirectorScore"
+      ].forEach(id => $(id).classList.remove("invalid"));
+    }
+
+    function showError(errorId, message, fieldIds = []) {
+      const error = $(errorId);
+      error.textContent = message;
+      error.classList.add("show");
+
+      fieldIds.forEach(id => $(id).classList.add("invalid"));
+    }
+
+    /* =========================================================
+       30) اختبار هل جميع الخانات الضرورية مملوءة
+       النتيجة لا تظهر قبل ذلك
+       ========================================================= */
+    function allRequiredFieldsFilled() {
+      if ($("promotionYear").value.trim() === "") return false;
+
+      return requiredIds.every(id => {
+        return $(id).value.trim() !== "";
+      });
+    }
+
+    /* =========================================================
+       31) قراءة تاريخ مكون من سنة + شهر + يوم
+       والتحقق من أن التاريخ موجود فعليا
+       مثال: 31 فبراير يعتبر غير صحيح
+       ========================================================= */
+    function parseDate(prefix) {
+      const year = Number($(prefix + "Year").value);
+      const month = Number($(prefix + "Month").value);
+      const day = Number($(prefix + "Day").value);
+
+      if (
+        !Number.isInteger(year) ||
+        year < 1950 ||
+        year > 2100 ||
+        !Number.isInteger(month) ||
+        month < 1 ||
+        month > 12 ||
+        !Number.isInteger(day) ||
+        day < 1 ||
+        day > 31
+      ) {
+        return null;
+      }
+
+      const date = new Date(year, month - 1, day);
+
+      if (
+        date.getFullYear() !== year ||
+        date.getMonth() !== month - 1 ||
+        date.getDate() !== day
+      ) {
+        return null;
+      }
+
+      return { year, month, day, date };
+    }
+
+    /* =========================================================
+       32) حساب عدد السنوات الكاملة إلى غاية 31 دجنبر
+       من سنة الترقي
+       ========================================================= */
+    function fullYearsUntilEndOfPromotionYear(parts, promotionYear) {
+      const end = new Date(Number(promotionYear), 11, 31);
+
+      if (!parts || parts.date > end) return 0;
+
+      let years = end.getFullYear() - parts.date.getFullYear();
+
+      const anniversary = new Date(
+        end.getFullYear(),
+        parts.date.getMonth(),
+        parts.date.getDate()
+      );
+
+      if (end < anniversary) years -= 1;
+
+      return Math.max(0, years);
+    }
+
+    /* =========================================================
+       33) التحقق من المعطيات
+       ========================================================= */
+    function validateAll() {
+      clearVisualErrors();
+
+      let valid = true;
+
+      const promotionYear = Number($("promotionYear").value);
+
+      if (
+        !Number.isInteger(promotionYear) ||
+        promotionYear < 2024 ||
+        promotionYear > 2100
+      ) {
+        showError(
+          "promotionYearError",
+          "يرجى إدخال سنة ترق صحيحة بين 2024 و2100.",
+          ["promotionYear"]
+        );
+        valid = false;
+      }
+
+      const admin = parseDate("admin");
+      if (!admin) {
+        showError(
+          "adminDateError",
+          "تاريخ التعيين أو الترسيم غير صحيح.",
+          ["adminYear", "adminMonth", "adminDay"]
+        );
+        valid = false;
+      }
+
+      const grade = parseDate("grade");
+      if (!grade) {
+        showError(
+          "gradeDateError",
+          "تاريخ الأقدمية في الدرجة غير صحيح.",
+          ["gradeYear", "gradeMonth", "gradeDay"]
+        );
+        valid = false;
+      }
+
+      if (Number.isInteger(promotionYear)) {
+        const end = new Date(promotionYear, 11, 31);
+
+        if (admin && admin.date > end) {
+          showError(
+            "adminDateError",
+            "تاريخ التعيين أو الترسيم يجب أن يسبق نهاية سنة الترقي.",
+            ["adminYear", "adminMonth", "adminDay"]
+          );
+          valid = false;
+        }
+
+        if (grade && grade.date > end) {
+          showError(
+            "gradeDateError",
+            "تاريخ الأقدمية في الدرجة يجب أن يسبق نهاية سنة الترقي.",
+            ["gradeYear", "gradeMonth", "gradeDay"]
+          );
+          valid = false;
+        }
+      }
+
+      if (admin && grade && grade.date < admin.date) {
+        showError(
+          "gradeDateError",
+          "تاريخ الأقدمية في الدرجة لا يمكن أن يسبق تاريخ التعيين أو الترسيم.",
+          ["gradeYear", "gradeMonth", "gradeDay"]
+        );
+        valid = false;
+      }
+
+      const scoreIds = [
+        "directorScore",
+        "inspectorScore",
+        "regionalDirectorScore"
+      ];
+
+      const scores = scoreIds.map(id => Number($(id).value));
+
+      if (
+        scores.some(score =>
+          !Number.isFinite(score) ||
+          score < 0 ||
+          score > 20
+        )
+      ) {
+        showError(
+          "evaluationError",
+          "يجب أن تكون كل نقطة بين 0 و20.",
+          scoreIds
+        );
+        valid = false;
+      }
+
+      return {
+        valid,
+        promotionYear,
+        admin,
+        grade,
+        scores
+      };
+    }
+
+    /* =========================================================
+       34) الحساب
+       المعادلة لم تتغير:
+       الأقدمية العامة + (الأقدمية في الدرجة × 2) + نقط التقييم
+       ========================================================= */
+    function calculateResult() {
+      const state = validateAll();
+
+      if (!state.valid) return null;
+
+      const adminYears = fullYearsUntilEndOfPromotionYear(
+        state.admin,
+        state.promotionYear
+      );
+
+      const gradeYears = fullYearsUntilEndOfPromotionYear(
+        state.grade,
+        state.promotionYear
+      );
+
+      const adminPoints = adminYears;
+      const gradePoints = gradeYears * 2;
+      const evaluationPoints = state.scores.reduce((sum, value) => sum + value, 0);
+      const total = adminPoints + gradePoints + evaluationPoints;
+
+      return {
+        promotionYear: state.promotionYear,
+        adminYears,
+        gradeYears,
+        adminPoints,
+        gradePoints,
+        evaluationPoints,
+        total
+      };
+    }
+
+    /* =========================================================
+       35) عرض النتيجة
+       ========================================================= */
+    function renderResult(result) {
+      const wasHidden = !$("resultSection").classList.contains("show");
+
+      $("resultYear").textContent = result.promotionYear;
+      $("totalPoints").textContent = formatNumber(result.total);
+
+      $("statAdminPoints").textContent = formatNumber(result.adminPoints);
+      $("statGradePoints").textContent = formatNumber(result.gradePoints);
+      $("statEvaluation").textContent = formatNumber(result.evaluationPoints);
+
+      $("adminYearsResult").textContent = result.adminYears + " سنة";
+      $("gradeYearsResult").textContent = result.gradeYears + " سنة";
+      $("gradePointsResult").textContent = formatNumber(result.gradePoints);
+
+      lastResult = result;
+      $("resultSection").classList.add("show");
+
+      /*
+        عند اكتمال آخر خانة، ننزل إلى النتيجة مرة واحدة فقط.
+        بعد ذلك تحديث القيم لا يعيد تمرير الصفحة كل مرة.
+      */
+      if (wasHidden && !resultWasVisible) {
+        resultWasVisible = true;
+
+        setTimeout(() => {
+          $("resultSection").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }, 120);
+      }
+    }
+
+    /* =========================================================
+       36) معاينة مجموع النقط الثلاث فقط
+       لا تعتبر هذه هي النتيجة النهائية
+       ========================================================= */
+    function updateEvaluationPreview() {
+      const ids = [
+        "directorScore",
+        "inspectorScore",
+        "regionalDirectorScore"
+      ];
+
+      const complete = ids.every(id => $(id).value.trim() !== "");
+
+      if (!complete) {
+        $("evaluationPreview").classList.remove("show");
+        return;
+      }
+
+      const values = ids.map(id => Number($(id).value));
+
+      if (
+        values.some(value =>
+          !Number.isFinite(value) ||
+          value < 0 ||
+          value > 20
+        )
+      ) {
+        $("evaluationPreview").classList.remove("show");
+        return;
+      }
+
+      const total = values.reduce((sum, value) => sum + value, 0);
+
+      $("evaluationPreviewValue").textContent = formatNumber(total);
+      $("evaluationPreview").classList.add("show");
+    }
+
+    /* =========================================================
+       37) الحفظ المحلي
+       ========================================================= */
+    function saveForm() {
+      const data = {
+        promotionYear: $("promotionYear").value,
+
+        adminYear: $("adminYear").value,
+        adminMonth: $("adminMonth").value,
+        adminDay: $("adminDay").value,
+
+        gradeYear: $("gradeYear").value,
+        gradeMonth: $("gradeMonth").value,
+        gradeDay: $("gradeDay").value,
+
+        directorScore: $("directorScore").value,
+        inspectorScore: $("inspectorScore").value,
+        regionalDirectorScore: $("regionalDirectorScore").value
+      };
+
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (_) { }
+    }
+
+    function restoreForm() {
+      /* القيمة الافتراضية دائما 2025 إذا لم توجد بيانات محفوظة */
+      $("promotionYear").value = DEFAULT_PROMOTION_YEAR;
+
+      try {
+        const saved = JSON.parse(
+          localStorage.getItem(STORAGE_KEY) || "null"
+        );
+
+        if (!saved) return;
+
+        Object.entries(saved).forEach(([id, value]) => {
+          if (
+            $(id) &&
+            value !== undefined &&
+            value !== null
+          ) {
+            $(id).value = value;
+          }
+        });
+
+      } catch (_) { }
+    }
+
+    /* =========================================================
+       38) تحديث التطبيق بعد كل تغيير
+       ========================================================= */
+    function refresh() {
+      updateEvaluationPreview();
+      saveForm();
+
+      /*
+        الشرط الرئيسي:
+        إذا لم تكتمل كل الخانات، النتيجة تختفي كليا.
+      */
+      if (!allRequiredFieldsFilled()) {
+        clearVisualErrors();
+        hideResult();
+        return;
+      }
+
+      /*
+        جميع الخانات مملوءة:
+        الآن فقط نقوم بالتحقق والحساب.
+      */
+      const result = calculateResult();
+
+      if (!result) {
+        hideResult();
+        return;
+      }
+
+      renderResult(result);
+    }
+
+    /* =========================================================
+       39) إعادة الضبط
+       ========================================================= */
+    function resetForm() {
+      $("promotionYear").value = DEFAULT_PROMOTION_YEAR;
+
+      requiredIds.forEach(id => {
+        $(id).value = "";
+      });
+
+      clearVisualErrors();
+      $("evaluationPreview").classList.remove("show");
+      hideResult();
+
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (_) { }
+
+      $("adminYear").focus();
+
+      showToast("تم مسح المعطيات وإرجاع سنة الترقي إلى 2025.");
+    }
+
+    /* =========================================================
+       مشاركة التطبيق نفسه كرابط
+       =========================================================
+       WhatsApp ينشئ بطاقة المعاينة انطلاقا من Open Graph
+       عندما يكون الرابط عاما ويبدأ بـ http:// أو https://.
+       ========================================================= */
+    async function shareApp() {
+      const isPublicWebPage =
+        location.protocol === "https:" || location.protocol === "http:";
+
+      if (!isPublicWebPage) {
+        showToast(
+          "لإظهار بطاقة WhatsApp يجب أولا نشر التطبيق على رابط HTTPS، وليس فتحه كملف محلي."
+        );
+        return;
+      }
+
+      const cleanUrl = PUBLIC_APP_URL;
+
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: APP_SHARE_TITLE,
+            text: APP_SHARE_DESCRIPTION,
+            url: cleanUrl
+          });
+          return;
+        }
+
+        await navigator.clipboard.writeText(cleanUrl);
+        showToast("تم نسخ رابط التطبيق.");
+      } catch (error) {
+        if (error && error.name === "AbortError") return;
+
+        try {
+          await navigator.clipboard.writeText(cleanUrl);
+          showToast("تم نسخ رابط التطبيق.");
+        } catch (_) {
+          showToast("تعذرت مشاركة رابط التطبيق.");
+        }
+      }
+    }
+
+    /* =========================================================
+       40) تنسيق النتيجة كنص
+       ========================================================= */
+    function formatResultText(result) {
+      return [
+        "نتيجة حساب نقط الترقية",
+        "الجامعة الوطنية لموظفي التعليم — المكتب الإقليمي لآسفي",
+        "-------------------------",
+        "سنة الترقي: " + result.promotionYear,
+        "سنوات الأقدمية العامة: " + result.adminYears + " سنة",
+        "نقط الأقدمية العامة: " + formatNumber(result.adminPoints),
+        "سنوات الأقدمية في الدرجة: " + result.gradeYears + " سنة",
+        "نقط الدرجة (2×): " + formatNumber(result.gradePoints),
+        "نقط التقييم: " + formatNumber(result.evaluationPoints),
+        "المجموع النهائي: " + formatNumber(result.total) + " نقطة"
+      ].join("\n");
+    }
+
+    /* =========================================================
+       41) نسخ النتيجة
+       ========================================================= */
+    async function copyResult() {
+      if (!lastResult) return;
+
+      const text = formatResultText(lastResult);
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("تم نسخ النتيجة.");
+      } catch (_) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+
+        showToast("تم نسخ النتيجة.");
+      }
+    }
+
+    /* =========================================================
+       42) انتظار تحميل الشعار قبل إنشاء الصورة
+       ========================================================= */
+    async function waitForResultAssets() {
+      const logo = $("resultLogo");
+
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_) { }
+      }
+
+      if (logo && !logo.complete) {
+        await new Promise(resolve => {
+          const done = () => resolve();
+
+          logo.addEventListener("load", done, { once: true });
+          logo.addEventListener("error", done, { once: true });
+        });
+      }
+    }
+
+    /* =========================================================
+       43) إنشاء صورة من بطاقة النتيجة
+       ========================================================= */
+    async function createResultCanvas() {
+      if (typeof html2canvas !== "function") {
+        throw new Error("html2canvas غير متوفر");
+      }
+
+      await waitForResultAssets();
+
+      return await html2canvas($("resultCapture"), {
+        scale: Math.min(window.devicePixelRatio || 2, 2.5),
+        useCORS: true,
+        backgroundColor: null,
+        logging: false
+      });
+    }
+
+    async function createResultImageFile() {
+      const canvas = await createResultCanvas();
+
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob(
+          value => {
+            if (value) resolve(value);
+            else reject(new Error("تعذر إنشاء الصورة"));
+          },
+          "image/png",
+          1
+        );
+      });
+
+      return new File(
+        [blob],
+        "resultat-promotion-" + lastResult.promotionYear + ".png",
+        { type: "image/png" }
+      );
+    }
+
+    /* =========================================================
+       44) المشاركة
+       على الهاتف نحاول مشاركة الصورة نفسها مع الشعار.
+       WhatsApp سيظهر ضمن تطبيقات المشاركة إذا كان مثبتا.
+       ========================================================= */
+    async function shareResult() {
+      if (!lastResult) return;
+
+      const button = $("shareBtn");
+      const originalText = button.textContent;
+
+      button.disabled = true;
+      button.textContent = "جاري التحضير...";
+
+      const text = formatResultText(lastResult);
+
+      try {
+        const imageFile = await createResultImageFile();
+
+        const canShareImage =
+          navigator.share &&
+          typeof navigator.canShare === "function" &&
+          navigator.canShare({ files: [imageFile] });
+
+        if (canShareImage) {
+          await navigator.share({
+            title: "نتيجة حساب نقط الترقية",
+            text,
+            files: [imageFile]
+          });
+
+          return;
+        }
+
+        if (navigator.share) {
+          await navigator.share({
+            title: "نتيجة حساب نقط الترقية",
+            text
+          });
+
+          showToast("هذا الجهاز شارك النص فقط ولم يدعم مشاركة الصورة.");
+          return;
+        }
+
+        await copyResult();
+
+      } catch (error) {
+        if (error && error.name === "AbortError") return;
+
+        try {
+          if (navigator.share) {
+            await navigator.share({
+              title: "نتيجة حساب نقط الترقية",
+              text
             });
-        }
+          } else {
+            await copyResult();
+          }
+        } catch (_) { }
 
-        /* وضع قيمة داخل خانة معينة */
-        function setValue(id, value) {
-            document.getElementById(id).value = value;
-        }
+        showToast("تعذرت مشاركة الصورة؛ تم استعمال النص إن أمكن.");
 
-        /* جلب قيمة خانة معينة */
-        function getValue(id) {
-            return document.getElementById(id).value;
-        }
+      } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    }
 
-        /* ضبط القيم داخل حدود دنيا وعليا */
-        function clamp(value, min, max) {
-            const number = Number(value);
-            if (Number.isNaN(number)) return min;
-            return Math.max(min, Math.min(max, number));
-        }
+    /* =========================================================
+       45) حفظ النتيجة كصورة PNG
+       ========================================================= */
+    async function saveResultAsImage() {
+      if (!lastResult) return;
 
-        /* حساب عدد السنوات الكاملة إلى غاية 31 دجنبر من سنة الترقي */
-        function fullYearsUntilEndOfPromotionYear(year, month, day, promotionYear) {
-            const start = new Date(Number(year), Number(month) - 1, Number(day));
-            const end = new Date(Number(promotionYear), 11, 31);
+      const button = $("saveBtn");
+      const originalText = button.textContent;
 
-            if (start > end) return 0;
+      button.disabled = true;
+      button.textContent = "جاري الحفظ...";
 
-            let years = end.getFullYear() - start.getFullYear();
-            const anniversary = new Date(end.getFullYear(), start.getMonth(), start.getDate());
+      try {
+        const canvas = await createResultCanvas();
 
-            if (end < anniversary) years -= 1;
+        const link = document.createElement("a");
+        link.download =
+          "resultat-promotion-" +
+          lastResult.promotionYear +
+          ".png";
 
-            return Math.max(0, years);
-        }
+        link.href = canvas.toDataURL("image/png");
+        link.click();
 
-        /* حساب مجموع نقط الترقية */
-        function calculateResult() {
-            const promotionYear = clamp(getValue("promotionYear"), 2024, 2100);
+        showToast("تم تجهيز صورة النتيجة بالشعار.");
 
-            const adminYear = clamp(getValue("adminYear"), 1950, 2100);
-            const adminMonth = clamp(getValue("adminMonth"), 1, 12);
-            const adminDay = clamp(getValue("adminDay"), 1, 31);
+      } catch (_) {
+        showToast(
+          "تعذر حفظ الصورة. تحقق من الاتصال ومن وجود untm-logo.png."
+        );
 
-            const gradeYear = clamp(getValue("gradeYear"), 1950, 2100);
-            const gradeMonth = clamp(getValue("gradeMonth"), 1, 12);
-            const gradeDay = clamp(getValue("gradeDay"), 1, 31);
+      } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    }
 
-            const directorScore = clamp(getValue("directorScore"), 0, 20);
-            const inspectorScore = clamp(getValue("inspectorScore"), 0, 20);
-            const regionalDirectorScore = clamp(getValue("regionalDirectorScore"), 0, 20);
+    /* =========================================================
+       46) ربط الأحداث
+       ========================================================= */
+    [
+      "promotionYear",
+      ...requiredIds
+    ].forEach(id => {
+      $(id).addEventListener("input", refresh);
+      $(id).addEventListener("change", refresh);
+    });
 
-            const adminYears = fullYearsUntilEndOfPromotionYear(
-                adminYear, adminMonth, adminDay, promotionYear
-            );
+    $("shareAppBtn").addEventListener("click", shareApp);
+    $("resetBtn").addEventListener("click", resetForm);
+    $("shareBtn").addEventListener("click", shareResult);
+    $("saveBtn").addEventListener("click", saveResultAsImage);
+    $("copyBtn").addEventListener("click", copyResult);
 
-            const gradeYears = fullYearsUntilEndOfPromotionYear(
-                gradeYear, gradeMonth, gradeDay, promotionYear
-            );
+    $("printBtn").addEventListener("click", () => {
+      if (lastResult) window.print();
+    });
 
-            const adminPoints = adminYears;
-            const gradePoints = gradeYears * 2;
-            const evaluationPoints = directorScore + inspectorScore + regionalDirectorScore;
-            const total = adminPoints + gradePoints + evaluationPoints;
-
-            return {
-                promotionYear,
-                adminYears,
-                gradeYears,
-                adminPoints,
-                gradePoints,
-                directorScore,
-                inspectorScore,
-                regionalDirectorScore,
-                evaluationPoints,
-                total
-            };
-        }
-
-        /* إظهار النتيجة داخل البطاقة */
-        function renderResult(result) {
-            document.getElementById("totalPoints").textContent = result.total.toFixed(2);
-            document.getElementById("rAdminYears").textContent = result.adminYears + " سنة";
-            document.getElementById("rAdminPoints").textContent = result.adminPoints;
-            document.getElementById("rGradeYears").textContent = result.gradeYears + " سنة";
-            document.getElementById("rGradePoints").textContent = result.gradePoints;
-            document.getElementById("rEvaluationPoints").textContent = result.evaluationPoints.toFixed(2);
-
-            document.getElementById("resultPanel").classList.add("show");
-        }
-
-        /* عند الضغط على زر احسب النتيجة */
-        function showResult() {
-            const result = calculateResult();
-            lastResult = result;
-            renderResult(result);
-
-            if (typeof gtag === "function") {
-                gtag("event", "calculate_result", {
-                    event_category: "promotion_calculator",
-                    event_label: "result_calculated"
-                });
-            }
-
-            document.getElementById("resultPanel").scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
-
-        /* إخفاء النتيجة */
-        function hideResult() {
-            document.getElementById("resultPanel").classList.remove("show");
-            lastResult = null;
-        }
-
-        /* إعادة الضبط إلى القيم الافتراضية */
-        function resetForm() {
-            setValue("promotionYear", defaultPromotionYear);
-
-            setValue("adminYear", currentYear - 15);
-            setValue("adminMonth", 1);
-            setValue("adminDay", 1);
-
-            setValue("gradeYear", currentYear - 6);
-            setValue("gradeMonth", 1);
-            setValue("gradeDay", 1);
-
-            setValue("directorScore", 20);
-            setValue("inspectorScore", 20);
-            setValue("regionalDirectorScore", 20);
-
-            hideResult();
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
-
-        /* ضمان وجود نتيجة قبل المشاركة أو النسخ أو الحفظ */
-        function ensureResult() {
-            if (!lastResult) {
-                lastResult = calculateResult();
-                renderResult(lastResult);
-            }
-
-            return lastResult;
-        }
-
-        /* تنسيق النتيجة كنص قابل للمشاركة */
-        function formatResultText(result) {
-            return [
-                "نتيجة حساب نقط الترقية",
-                "المكتب الإقليمي لآسفي",
-                "-------------------------",
-                "سنة الترقي: " + result.promotionYear,
-                "سنوات الأقدمية العامة: " + result.adminYears + " سنة",
-                "نقط الأقدمية العامة: " + result.adminPoints,
-                "سنوات الدرجة: " + result.gradeYears + " سنة",
-                "نقط الدرجة (2×): " + result.gradePoints,
-                "النقطة الإدارية: " + result.evaluationPoints.toFixed(2),
-                "المجموع النهائي: " + result.total.toFixed(2) + " نقطة"
-            ].join("\n");
-        }
-
-        /* مشاركة النتيجة عبر خاصية المشاركة في الهاتف */
-        async function shareResultGeneral() {
-            const result = ensureResult();
-            const text = formatResultText(result);
-
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: "نتيجة حساب نقط الترقية",
-                        text: text
-                    });
-                } catch (e) {
-                    /* تم إلغاء المشاركة أو وقع خطأ */
-                }
-            } else {
-                copyTextFallback(text);
-                alert("تم نسخ النتيجة لأن خاصية المشاركة غير متوفرة على هذا الجهاز.");
-            }
-        }
-
-        /* نسخ النتيجة */
-        async function copyResult() {
-            const result = ensureResult();
-            const text = formatResultText(result);
-
-            if (navigator.clipboard) {
-                try {
-                    await navigator.clipboard.writeText(text);
-                    alert("تم نسخ النتيجة.");
-                    return;
-                } catch (e) {
-                    copyTextFallback(text);
-                }
-            } else {
-                copyTextFallback(text);
-            }
-
-            alert("تم نسخ النتيجة.");
-        }
-
-        /* طريقة احتياطية للنسخ */
-        function copyTextFallback(text) {
-            const textarea = document.createElement("textarea");
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand("copy");
-            document.body.removeChild(textarea);
-        }
-
-        /* حفظ بطاقة النتيجة كصورة */
-        function saveResultAsImage() {
-            const result = ensureResult();
-            const target = document.getElementById("resultCapture");
-
-            html2canvas(target, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: null
-            }).then(canvas => {
-                const link = document.createElement("a");
-                link.download = "resultat-promotion-" + result.promotionYear + ".png";
-                link.href = canvas.toDataURL("image/png");
-                link.click();
-            }).catch(() => {
-                alert("تعذر حفظ الصورة.");
-            });
-        }
-
-        /* تشغيل التطبيق عند فتح الصفحة */
-        fillMonths();
-        resetForm();
-    </script>
+    /* =========================================================
+       47) تشغيل التطبيق
+       ========================================================= */
+    restoreForm();
+    refresh();
+  </script>
 </body>
 
 </html>
